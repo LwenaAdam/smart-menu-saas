@@ -59,14 +59,20 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             
             // Configure which endpoints need authentication
+                        // Configure which endpoints need authentication
             .authorizeHttpRequests(auth -> auth
                 // Public endpoints (no authentication needed) - ORDER MATTERS!
                 .requestMatchers("/api/auth/**").permitAll()    // Login, register
                 .requestMatchers("/api/public/**").permitAll()  // Public menu access
                 .requestMatchers("/api/health").permitAll()      // Health check
-                .requestMatchers("/swagger-ui/**").permitAll()   // API docs
-                .requestMatchers("/api-docs/**").permitAll()     // API docs
-                .requestMatchers("/error").permitAll()           // Error page
+                
+                // --- SWAGGER & OPENAPI ENDPOINTS FIX ---
+                .requestMatchers("/swagger-ui.html").permitAll()   // Main entry point
+                .requestMatchers("/swagger-ui/**").permitAll()     // UI assets (js, css, png)
+                .requestMatchers("/v3/api-docs/**").permitAll()    // OpenAPI v3 JSON spec docs
+                .requestMatchers("/api-docs/**").permitAll()       // Legacy fallback/custom docs path
+                
+                .requestMatchers("/error").permitAll()             // Error page
                 
                 // All other endpoints require authentication
                 .anyRequest().authenticated()
