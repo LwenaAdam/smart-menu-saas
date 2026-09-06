@@ -3,35 +3,26 @@ package com.smartmenu.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.index.Indexed;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * User Entity - Represents restaurant owners/managers who use the system
- * 
- * @Document tells Spring this is a MongoDB collection
- * @Data (Lombok) generates getters/setters/toString/equals/hashCode
- * @NoArgsConstructor creates empty constructor
- * @AllArgsConstructor creates constructor with all fields
- */
-@Document(collection = "users")
+@Entity
+@jakarta.persistence.Table(name = "users") 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     
     @Id
-    private String id;  // MongoDB uses String IDs by default
-    
-    @Indexed(unique = true)  // Create unique index on username
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrementing Integer/Long
+    private Long id;
+
+    @Column(unique = true, nullable = false) // Create unique index on username
     private String username;
     
-    @Indexed(unique = true)  // Create unique index on email
+    @Column(unique = true)  // Create unique index on email
     private String email;
     
     private String password;  // Will be hashed with BCrypt

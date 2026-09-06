@@ -41,3 +41,5 @@ yarn-debug.log*
 yarn-error.log*
 backend-output.txt
 logs-backend.txt
+.vscode/settings.json
+backend/src/main/resources/application.properties
