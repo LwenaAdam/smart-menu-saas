@@ -1,7 +1,7 @@
 package com.smartmenu.repository;
 
 import com.smartmenu.model.CustomerSession;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -10,7 +10,7 @@ import java.util.Optional;
  * Customer Session Repository
  */
 @Repository
-public interface CustomerSessionRepository extends MongoRepository<CustomerSession, String> {
+public interface CustomerSessionRepository extends JpaRepository<CustomerSession, Long> {
     
     // Find session by device ID
     Optional<CustomerSession> findByDeviceId(String deviceId);

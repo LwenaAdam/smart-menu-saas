@@ -1,7 +1,7 @@
 package com.smartmenu.repository;
 
 import com.smartmenu.model.MenuItem;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * MenuItem Repository
  */
 @Repository
-public interface MenuItemRepository extends MongoRepository<MenuItem, String> {
+public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
     
     // Find all menu items for a specific restaurant/user
     List<MenuItem> findByUserId(String userId);

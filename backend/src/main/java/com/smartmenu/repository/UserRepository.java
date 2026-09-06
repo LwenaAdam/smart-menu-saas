@@ -1,7 +1,7 @@
 package com.smartmenu.repository;
 
 import com.smartmenu.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -19,7 +19,7 @@ import java.util.Optional;
  * You can also define custom query methods by following naming conventions
  */
 @Repository
-public interface UserRepository extends MongoRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
     
     /**
      * Find user by username (for login)
