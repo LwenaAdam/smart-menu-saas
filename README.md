@@ -171,9 +171,14 @@ sudo docker run -d \
   -v ~/mongo-data:/data/db \
   mongo:7.0
 
+  #on run run
+  sudo docker start mongodb
+
 # Verify it's running
 sudo docker ps | grep mongodb
 ```
+# logs 
+sudo docker logs -f mongodb
 
 #### 3. Configure Backend
 ```bash
