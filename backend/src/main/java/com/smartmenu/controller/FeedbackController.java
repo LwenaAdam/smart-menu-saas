@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -82,11 +83,12 @@ public class FeedbackController {
     
     /**
      * Get feedback by ID
+     * 🔥 FIXED: Changed path identifier type from String to Long for PostgreSQL support
      */
     @GetMapping("/{id}")
     public ResponseEntity<Feedback> getFeedbackById(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
-            @PathVariable String id
+            @PathVariable @NonNull Long id
     ) {
         String userId = userDetails.getId();
         return feedbackRepository.findById(id)
@@ -122,8 +124,10 @@ public class FeedbackController {
         List<Feedback> allFeedback = feedbackRepository.findByUserId(userId);
         
         long totalFeedback = allFeedback.size();
+        
+        // 🔥 FIXED: Added explicit null check lambda to protect mapToInt wrapper conversion
         double averageRating = allFeedback.stream()
-                .mapToInt(Feedback::getRating)
+                .mapToInt(f -> f.getRating() != null ? f.getRating() : 0)
                 .average()
                 .orElse(0.0);
         
@@ -132,7 +136,7 @@ public class FeedbackController {
         for (int i = 1; i <= 5; i++) {
             final int rating = i;
             long count = allFeedback.stream()
-                    .filter(f -> f.getRating() == rating)
+                    .filter(f -> f.getRating() != null && f.getRating() == rating)
                     .count();
             ratingDistribution.put(rating, count);
         }
@@ -147,11 +151,13 @@ public class FeedbackController {
     
     /**
      * Delete feedback
+     * 🔥 FIXED: Changed path identifier type from String to Long for PostgreSQL support
      */
+    @SuppressWarnings("null")
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> deleteFeedback(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
-            @PathVariable String id
+            @PathVariable @NonNull Long id
     ) {
         String userId = userDetails.getId();
         return feedbackRepository.findById(id)

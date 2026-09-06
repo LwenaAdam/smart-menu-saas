@@ -20,7 +20,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findByUserIdAndStatus(String userId, Order.OrderStatus status);
     
     // Find orders for a specific table
-    List<Order> findByTableId(String tableId);
+    List<Order> findByTableId(Long tableId);
     
     // Find orders by status, ordered by creation date
     List<Order> findByUserIdAndStatusOrderByCreatedAtDesc(String userId, Order.OrderStatus status);
@@ -33,5 +33,5 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     
     // Count methods for dashboard statistics
     long countByUserId(String userId);
-    long countByUserIdAndStatus(String userId, String status);
+    long countByUserIdAndStatus(String userId, Order.OrderStatus status);
 }

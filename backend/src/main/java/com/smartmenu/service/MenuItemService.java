@@ -97,7 +97,7 @@ public class MenuItemService {
     /**
      * Get menu item by ID
      */
-    public Optional<MenuItemResponse> getMenuItemById(String id) {
+    public Optional<MenuItemResponse> getMenuItemById(Long id) {
         return menuItemRepository.findById(id)
             .map(this::toResponse);
     }
@@ -114,7 +114,7 @@ public class MenuItemService {
     /**
      * Update existing menu item
      */
-    public MenuItemResponse updateMenuItem(String id, MenuItemRequest request) {
+    public MenuItemResponse updateMenuItem(Long id, MenuItemRequest request) {
         // Check if exists
         MenuItem existing = menuItemRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Menu item not found with id: " + id));
@@ -139,7 +139,7 @@ public class MenuItemService {
     /**
      * Toggle availability
      */
-    public MenuItemResponse toggleAvailability(String id) {
+    public MenuItemResponse toggleAvailability(Long id) {
         MenuItem item = menuItemRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Menu item not found with id: " + id));
         item.setAvailable(!item.isAvailable());
@@ -151,7 +151,7 @@ public class MenuItemService {
     /**
      * Delete menu item
      */
-    public void deleteMenuItem(String id) {
+    public void deleteMenuItem(Long id) {
         if (!menuItemRepository.existsById(id)) {
             throw new RuntimeException("Menu item not found with id: " + id);
         }

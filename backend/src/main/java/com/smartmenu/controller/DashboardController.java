@@ -46,7 +46,7 @@ public class DashboardController {
         long totalOrders = orderRepository.countByUserId(userId);
         
         // Count pending orders
-        long pendingOrders = orderRepository.countByUserIdAndStatus(userId, "pending");
+        long pendingOrders = orderRepository.countByUserIdAndStatus(userId, com.smartmenu.model.Order.OrderStatus.PENDING);
         
         // Count active menu items
         long activeItems = menuItemRepository.countByUserIdAndAvailableTrue(userId);
@@ -89,7 +89,9 @@ public class DashboardController {
             var order = orders.get(i);
             Map<String, Object> orderData = new HashMap<>();
             orderData.put("id", order.getId());
-            orderData.put("orderNumber", "ORD-" + order.getId().substring(Math.max(0, order.getId().length() - 3)));
+            orderData.put("orderNumber", order.getOrderNumber() != null
+                    ? order.getOrderNumber()
+                    : "ORD-" + order.getId());
             orderData.put("tableNumber", order.getTableNumber());
             orderData.put("amount", order.getTotal());
             orderData.put("status", order.getStatus());

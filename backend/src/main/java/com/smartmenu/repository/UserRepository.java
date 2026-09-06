@@ -8,14 +8,14 @@ import java.util.Optional;
 
 /**
  * User Repository - Database access for User entity
- * 
- * MongoRepository provides CRUD methods automatically:
+ *
+ * JpaRepository provides CRUD methods automatically:
  *  - save()
  *  - findById()
  *  - findAll()
  *  - deleteById()
  *  - etc.
- * 
+ *
  * You can also define custom query methods by following naming conventions
  */
 @Repository

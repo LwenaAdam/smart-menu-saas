@@ -95,10 +95,10 @@ public class TableController {
      * Delete a table owned by the current user
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTable(@AuthenticationPrincipal UserDetailsImpl currentUser, @PathVariable String id) {
+    public ResponseEntity<?> deleteTable(@AuthenticationPrincipal UserDetailsImpl currentUser, @PathVariable Long id) {
         String userId = currentUser.getId();
 
-        if (id == null || id.isEmpty()) {
+        if (id == null) {
             return ResponseEntity.badRequest().body(Map.of("error", "Invalid id"));
         }
 

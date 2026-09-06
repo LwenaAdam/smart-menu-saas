@@ -2,7 +2,7 @@ package com.smartmenu;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.config.EnableMongoAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * Main Application Entry Point
@@ -13,13 +13,10 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
  *  - @ComponentScan: Scans for @Component, @Service, @Controller, etc.
  */
 @SpringBootApplication
-@EnableMongoAuditing  // Enables createdAt/updatedAt automatic timestamps
+@EnableJpaAuditing 
 public class SmartMenuApplication {
 
-    /**
-     * Main method - Entry point of the application
-     * Similar to index.php in PHP, but Spring Boot creates an embedded server
-     */
+   
     public static void main(String[] args) {
         SpringApplication.run(SmartMenuApplication.class, args);
         System.out.println("\n" +
@@ -27,7 +24,7 @@ public class SmartMenuApplication {
             "✅ SmartMenu Backend Started Successfully!\n" +
             "📡 API: http://localhost:8080\n" +
             "📖 Swagger UI: http://localhost:8080/swagger-ui.html\n" +
-            "🗄️  MongoDB: localhost:27017/smartmenu\n" +
+            "🗄️  PostgreSQL: localhost:5432/smartmenu\n" + // Updated to reflect Postgres
             "===========================================\n");
     }
 }

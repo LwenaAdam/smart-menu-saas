@@ -84,7 +84,7 @@ public class MenuItemController {
      * .orElse(...) = if not present, return 404
      */
     @GetMapping("/{id}")
-    public ResponseEntity<MenuItemResponse> getMenuItemById(@PathVariable String id) {
+    public ResponseEntity<MenuItemResponse> getMenuItemById(@PathVariable Long id) {
         return menuItemService.getMenuItemById(id)
             .map(ResponseEntity::ok)                    // Found: return 200 OK
             .orElse(ResponseEntity.notFound().build()); // Not found: return 404
@@ -128,7 +128,7 @@ public class MenuItemController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<MenuItemResponse> updateMenuItem(
-            @PathVariable String id,
+            @PathVariable Long id,
             @Valid @RequestBody MenuItemRequest request) {
         try {
             MenuItemResponse updated = menuItemService.updateMenuItem(id, request);
@@ -150,7 +150,7 @@ public class MenuItemController {
      * Example: PATCH /api/menu-items/673e1a2b4c5d6e7f8a9b0c1d/toggle
      */
     @PatchMapping("/{id}/toggle")
-    public ResponseEntity<MenuItemResponse> toggleAvailability(@PathVariable String id) {
+    public ResponseEntity<MenuItemResponse> toggleAvailability(@PathVariable Long id) {
         try {
             MenuItemResponse updated = menuItemService.toggleAvailability(id);
             return ResponseEntity.ok(updated);
@@ -170,7 +170,7 @@ public class MenuItemController {
      * ResponseEntity<Void> = no response body
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMenuItem(@PathVariable String id) {
+    public ResponseEntity<Void> deleteMenuItem(@PathVariable Long id) {
         try {
             menuItemService.deleteMenuItem(id);
             return ResponseEntity.noContent().build();  // HTTP 204

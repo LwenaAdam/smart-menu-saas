@@ -4,6 +4,7 @@ import com.smartmenu.model.Order;
 import com.smartmenu.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class OrderController {
      * Get a specific order by ID
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable String id, Authentication authentication) {
+    public ResponseEntity<Order> getOrderById(@PathVariable @NonNull Long id, Authentication authentication) {
         Optional<Order> order = orderRepository.findById(id);
         
         if (order.isEmpty()) {
@@ -58,7 +59,7 @@ public class OrderController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(
-            @PathVariable String id,
+            @PathVariable @NonNull Long id,
             @RequestBody UpdateOrderRequest request,
             Authentication authentication) {
         
@@ -81,6 +82,7 @@ public class OrderController {
         }
         
         // Save updated order
+        @SuppressWarnings("null")
         Order savedOrder = orderRepository.save(order);
         
         return ResponseEntity.ok(savedOrder);
@@ -91,7 +93,7 @@ public class OrderController {
      * Delete an order (cancel)
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable String id, Authentication authentication) {
+    public ResponseEntity<Void> deleteOrder(@PathVariable @NonNull Long id, Authentication authentication) {
         if (!orderRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }

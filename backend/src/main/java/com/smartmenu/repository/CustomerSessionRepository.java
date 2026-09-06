@@ -16,5 +16,5 @@ public interface CustomerSessionRepository extends JpaRepository<CustomerSession
     Optional<CustomerSession> findByDeviceId(String deviceId);
     
     // Find session by device ID and table ID
-    Optional<CustomerSession> findByDeviceIdAndTableId(String deviceId, String tableId);
+    Optional<CustomerSession> findByDeviceIdAndTableId(String deviceId, Long tableId);
 }

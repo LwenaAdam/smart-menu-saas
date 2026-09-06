@@ -22,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MenuItemResponse {
     
-    private String id;
+    private Long id;
     private String userId;
     private String name;
     private String description;
