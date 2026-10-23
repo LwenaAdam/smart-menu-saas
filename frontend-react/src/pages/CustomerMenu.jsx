@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import './CustomerMenu.css';
 
 function CustomerMenu() {
@@ -52,8 +52,8 @@ function CustomerMenu() {
             setLoading(true);
             
             // Load menu
-            const menuResponse = await axios.get(
-                `http://localhost:8080/api/public/menu/${tableId}?deviceId=${deviceId}`
+            const menuResponse = await api.get(
+                `/public/menu/${tableId}?deviceId=${deviceId}`
             );
             
             setTableInfo({
@@ -63,8 +63,8 @@ function CustomerMenu() {
             setMenuItems(menuResponse.data.menuItems || []);
             
             // Check existing session
-            const sessionResponse = await axios.get(
-                `http://localhost:8080/api/public/session/${deviceId}`
+            const sessionResponse = await api.get(
+                `/public/session/${deviceId}`
             );
             
             if (sessionResponse.data.isReturningCustomer) {
@@ -150,7 +150,7 @@ function CustomerMenu() {
         
         try {
             // Track session with customer name
-            await axios.post('http://localhost:8080/api/public/session', {
+            await api.post('/public/session', {
                 deviceId: deviceId,
                 tableId: tableId,
                 customerName: customerName

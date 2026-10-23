@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import './CustomerFeedback.css';
 
 function CustomerFeedback() {
@@ -30,7 +30,7 @@ function CustomerFeedback() {
 
             const deviceId = localStorage.getItem('deviceId');
             
-            await axios.post('http://localhost:8080/api/public/feedback', {
+            await api.post('/public/feedback', {
                 orderNumber,
                 deviceId,
                 rating,

@@ -14,6 +14,7 @@
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
+import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -34,8 +35,8 @@ function App() {
     <LanguageProvider>
       <Router>
         <Routes>
-        {/* Default route - redirect to login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Public Landing Page */}
+        <Route path="/" element={<LandingPage />} />
         
         {/* Customer Menu - Public route for QR code scans (no auth required) */}
         <Route path="/customer-menu" element={<CustomerMenu />} />

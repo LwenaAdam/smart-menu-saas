@@ -6,6 +6,8 @@
 *.key
 credentials.txt
 MONGODB_CONNECTION.md
+docs/04_new_server_infrastructure_guide.md
+docs/03_app_server_new.md
 
 # Build artifacts
 cleanup.sh

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import './OrderTracking.css';
 
 function OrderTracking() {
@@ -27,8 +27,8 @@ function OrderTracking() {
 
     const loadOrderStatus = async () => {
         try {
-            const response = await axios.get(
-                `http://localhost:8080/api/public/order/${orderNumber}`
+            const response = await api.get(
+                `/public/order/${orderNumber}`
             );
             setOrder(response.data);
             setLoading(false);
