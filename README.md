@@ -645,3 +645,5 @@ For questions or issues:
 **Built with ❤️ as a learning project to master Spring Boot, React, and MongoDB**
 
 *Last Updated: November 20, 2025*
+
+<!-- Enhanced by Lwena Adam -->
