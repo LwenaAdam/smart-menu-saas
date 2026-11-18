@@ -91,10 +91,10 @@ export default function LandingPage() {
         <div className="landing-container top-bar-content">
           <span>🇹🇿 <strong>Engineered for African Hospitality</strong> — Turn tables faster & delight your guests.</span>
           <div className="top-bar-links">
-            <a href="https://api-smartmenu.techwareafrica.tech/swagger-ui.html" target="_blank" rel="noopener noreferrer" className="top-swagger-badge">
+            <a href="https://api-smartmenu.techware.africa/swagger-ui.html" target="_blank" rel="noopener noreferrer" className="top-swagger-badge">
               <i className="fa-solid fa-code"></i> Developer API
             </a>
-            <a href="https://www.techwareafrica.tech/products/smartmenu-qr" target="_blank" rel="noopener noreferrer">
+            <a href="https://techware.africa/products/smartmenu-qr" target="_blank" rel="noopener noreferrer">
               TechWare Africa
             </a>
           </div>
@@ -502,7 +502,7 @@ export default function LandingPage() {
                 <li><i className="fa-solid fa-check"></i> Dedicated account manager</li>
                 <li><i className="fa-solid fa-check"></i> On-site staff training & onboarding</li>
               </ul>
-              <a href="https://www.techwareafrica.tech" target="_blank" rel="noopener noreferrer" className="btn-plan-outline">
+              <a href="https://techware.africa" target="_blank" rel="noopener noreferrer" className="btn-plan-outline">
                 Contact Enterprise Team
               </a>
             </div>
@@ -581,7 +581,7 @@ export default function LandingPage() {
               <li><Link to="/customer-menu?table=1">Live Customer Menu</Link></li>
               <li><Link to="/order-tracking?order=1">Order Tracking</Link></li>
               <li><a href="#pricing">Pricing Plans</a></li>
-              <li><a href="https://api-smartmenu.techwareafrica.tech/swagger-ui.html" target="_blank" rel="noopener noreferrer">Swagger API Docs</a></li>
+              <li><a href="https://api-smartmenu.techware.africa/swagger-ui.html" target="_blank" rel="noopener noreferrer">Swagger API Docs</a></li>
             </ul>
           </div>
 
@@ -598,8 +598,8 @@ export default function LandingPage() {
           <div className="footer-col">
             <h4>TechWare Africa</h4>
             <ul>
-              <li><a href="https://www.techwareafrica.tech" target="_blank" rel="noopener noreferrer">Company Overview</a></li>
-              <li><a href="https://www.techwareafrica.tech/products/smartmenu-qr" target="_blank" rel="noopener noreferrer">Product Profile</a></li>
+              <li><a href="https://techware.africa" target="_blank" rel="noopener noreferrer">Company Overview</a></li>
+              <li><a href="https://techware.africa/products/smartmenu-qr" target="_blank" rel="noopener noreferrer">Product Profile</a></li>
               <li><Link to="/login">Restaurant Admin Portal</Link></li>
               <li><Link to="/register">Create Free Account</Link></li>
             </ul>
